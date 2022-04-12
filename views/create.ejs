@@ -7,7 +7,25 @@
         <!-- Display Nav -->
         <%- include("./partials/nav.ejs") %>
 
-        
+            <div class="create-recipe content">
+                <form action="/recipes" method="post">
+                    <label for="name">Recipe Name: </label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="cook-time">Cooking Time (in mins): </label>
+                    <input type="number" id="cook-time" name="cook-time">
+
+                    <label for="ingredients">Ingredients: </label>
+                    <textarea name="ingredients" id="ingredients" required></textarea>
+
+                    <label for="procedure">Procedure: </label>
+                    <textarea name="procedure" id="procedure" required></textarea>
+
+                    <label for="image">Image Source: </label>
+                    <input type="text" id="image" name="image">
+                    <button>Submit</button>
+                </form>
+            </div>
 
     </body>
 

@@ -9,7 +9,7 @@ const recipeSchema = new Schema({
     },
     cookingTime: {
         type: Number,
-        required: false
+        required: true
     },
     ingredients: {
         type: String,
@@ -20,7 +20,7 @@ const recipeSchema = new Schema({
         required: true
     },
     localImg: {
-        type: Image,
+        type: String,
         required: false
     }
 }, { timestamps: true })

@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
+const Recipe = require("./models/recipe")
 
 // set view engine
 app.set("view engine", "ejs")
@@ -14,7 +15,11 @@ mongoose.connect(URL)
     .catch((err) => console.log(err))
 
 app.get("/recipes", (req, res) => {
-    res.render("home", { title: "HOME" })
+    Recipe.find().sort({ createdAt: -1 })
+        .then((result) => {
+            res.render("home", { title: "HOME", recipes: result })
+        })
+        .catch(err => console.log(err))
 })
 
 app.get("/", (req, res) => {
@@ -24,3 +29,4 @@ app.get("/", (req, res) => {
 app.get("/recipes/create", (req, res) => {
     res.render("create", { title: "CREATE" })
 })
+

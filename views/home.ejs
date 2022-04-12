@@ -6,6 +6,23 @@
     <body>
         <!-- Display Nav -->
         <%- include("./partials/nav.ejs") %>
+        
+        <div class="recipes content">
+            <h2>All Recipes</h2>
+    
+            <% if (recipes.length > 0) { %>
+                <% recipes.forEach(recipe => { %>
+                    <a class="single" href="/recipes/<%= recipe._id %>">
+                        <h3 class="name"> <%= recipe.name %></h3>
+                        <p class="cook-time"> <%= recipe.cookingTime %></p>
+                    </a>
+                <% }) %>
+            <% } else { %>
+                <p>No recipes to display</p>
+            <% } %>
+    
+        </div>
+
     </body>
 
 </html>

@@ -30,3 +30,30 @@ app.get("/recipes/create", (req, res) => {
     res.render("create", { title: "CREATE" })
 })
 
+app.post("/recipes", (req, res) => {
+    const recipe = new Recipe(req.body)
+    recipe.save()
+        .then(result => res.redirect("/recipes"))
+        .catch(err => console.log(err))
+})
+
+app.get("/recipes/:id", (req, res) => {
+    const id = req.params.id
+    Recipe.findById(id)
+        .then(result => {
+            res.render("details", { title: "Recipe Details", recipe: result })
+        })
+        .catch(err => console.log(err))
+})
+
+app.delete("/recipes/:id", (req, res) => {
+    const id = req.params.id
+    Recipe.findByIdAndDelete(id)
+        .then(result => res.json({ redirect: "/recipes" }))
+        .catch(err => console.log(err))
+})
+
+// 404
+app.use((req, res) => {
+    res.status(404).render("404", { title: "404" })
+})

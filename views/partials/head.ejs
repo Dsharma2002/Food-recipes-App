@@ -2,15 +2,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> My Recipes | <%= title %></title>
+    <title> My Recipes | <%= title %>
+    </title>
 
     <style>
-
         body {
             max-width: 100vw;
             margin: auto auto;
             padding: 0 20px;
             max-height: 100vh;
+            background: lightyellow;
         }
 
         nav {
@@ -21,25 +22,34 @@
             border-bottom: 1px solid #ddd;
             text-transform: uppercase;
         }
+
         nav ul {
             display: flex;
             justify-content: space-around;
             align-items: flex-end;
         }
+
         nav li {
             list-style-type: none;
             margin-left: 20px;
         }
+
         nav h1 {
             font-size: 3em;
         }
+
         nav p,
         nav a {
             color: #777;
             font-weight: 300;
         }
 
-        p, h1, h2, h3, a, ul {
+        p,
+        h1,
+        h2,
+        h3,
+        a,
+        ul {
             margin: 0;
             padding: 0;
             text-decoration: none;
@@ -74,8 +84,63 @@
             border-radius: 5px;
             cursor: crosshair;
             border: none;
+            background-color: rgba(211, 211, 211, 0.612);
         }
 
+        .recipes a {
+            display: block;
+            margin: 40px 0;
+            padding-left: 30px;
+            border-left: 6px solid rgb(180, 103, 31);
+            font-size: 1.5rem;
+        }
+
+        .recipes a:hover h3 {
+            color: rgb(180, 103, 31)
+        }
+
+        .details {
+            position: relative;
+        }
+
+        .delete {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 35%;
+            padding: 10px;
+        }
+
+        .edit {
+            position: absolute;
+            top: 0;
+            right: 5%;
+            border-radius: 35%;
+            padding: 10px;
+        }
+
+        .delete:hover,
+        .edit:hover {
+            cursor: pointer;
+            box-shadow: 1px, 2px, 3px, black;
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .cancel-link {
+            font-size: 1.2rem;
+            background-color: rgba(211, 211, 211, 0.612);
+            padding: 1px 6px;
+            color: black;
+            border-radius: 5px;
+        }
+
+        .cancel-link:hover {
+            cursor: pointer;
+        }
     </style>
 
 </head>

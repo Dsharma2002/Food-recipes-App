@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Display Head -->
+<%- include("./partials/head.ejs") %>
+
+    <body>
+        <!-- Display Nav -->
+        <%- include("./partials/nav.ejs") %>
+
+            <div class="details content">
+                <h2 style="font-size: 2.5rem;">
+                    <%= recipe.name %>
+                </h2>
+                <div class="class ingredients">
+                    <p style="margin: 10px; padding: 10px; font-size: 2rem;">
+                    <p style="font-size: 2rem;">Ingredients: </p> <br>
+                    <%= recipe.ingredients %>
+                        </p>
+                </div>
+                <div class="class procedure">
+                    <p style="margin: 10px; padding: 10px; font-size: 2rem;">
+                    <p style="font-size: 2rem;">Procedure: </p> <br>
+                    <%= recipe.procedure %>
+                        </p>
+                </div>
+                <div>
+                    <p> <%= recipe.localImg %> </p>
+                </div>
+                <a class="delete" data-doc="<%= recipe._id %>">Delete</a>
+                <a class="edit" href="/recipes/edit/<%= recipe._id %>">Edit</a>
+            </div>
+
+            <script>
+                const deleteElement = document.querySelector('.delete')
+                deleteElement.addEventListener('click', (e) => {
+                    const endpoint = `/recipes/${deleteElement.dataset.doc}`
+                    fetch(endpoint, {
+                        method: 'Delete'
+                    })
+                        .then((response) => {
+                            response.json()
+                        }).then((data) => {
+                            window.location.href = '/recipes'
+                        }).cathc((err) => {
+                            console.log(err)
+                        })
+                })
+            </script>
+
+    </body>
+
+</html>

@@ -8,13 +8,14 @@
         <%- include("./partials/nav.ejs") %>
         
         <div class="recipes content">
-            <h2>All Recipes</h2>
+            <h2 style="font-size: 2rem;">All Recipes</h2>
     
             <% if (recipes.length > 0) { %>
                 <% recipes.forEach(recipe => { %>
                     <a class="single" href="/recipes/<%= recipe._id %>">
                         <h3 class="name"> <%= recipe.name %></h3>
-                        <p class="cook-time"> <%= recipe.cookingTime %></p>
+                        <p class="cook-time" style="font-size: 1.2rem; padding: 5px;"> <%= recipe.cookTime %></p>
+                        <p class="mainIngredient" style="font-size: 1.2rem; padding: 5px;"> Main Ingredient: <%= recipe.mainIngredient %></p>
                     </a>
                 <% }) %>
             <% } else { %>

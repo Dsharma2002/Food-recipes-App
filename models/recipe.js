@@ -7,8 +7,12 @@ const recipeSchema = new Schema({
         type: String,
         required: true
     },
-    cookingTime: {
+    cookTime: {
         type: Number,
+        required: true
+    },
+    mainIngredient: {
+        type: String,
         required: true
     },
     ingredients: {
@@ -18,10 +22,6 @@ const recipeSchema = new Schema({
     procedure: {
         type: String,
         required: true
-    },
-    localImg: {
-        type: String,
-        required: false
     }
 }, { timestamps: true })
 

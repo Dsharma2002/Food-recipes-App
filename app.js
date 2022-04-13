@@ -3,12 +3,14 @@ const app = express()
 const mongoose = require("mongoose")
 const Recipe = require("./models/recipe")
 const methodOverride = require("method-override")
+// const bodyParser = require("body-parser")
 
 // set view engine
 app.set("view engine", "ejs")
+// app.use(bodyParser.json())
 
 // middleware
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"))
 
 const URL = `mongodb+srv://divi2002:divyansh@cluster0.wwyhn.mongodb.net/Cluster0?retryWrites=true&w=majority`
@@ -73,6 +75,7 @@ function saveRecipe(path) {
         let recipe = req.recipe
         recipe.name = req.body.name
         recipe.cookTime = req.body.cookTime
+        recipe.mainIngredient = req.body.mainIngredient
         recipe.ingredients = req.body.ingredients
         recipe.procedure = req.body.procedure
         try {
